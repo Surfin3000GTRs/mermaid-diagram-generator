@@ -25,6 +25,7 @@ Turn requirements, code, or existing diagrams into readable Mermaid without inve
 ## Examples
 
 ### Widely supported flowchart
+
 ```mermaid
 flowchart TD
     U[User] -->|Submit request| GW[API Gateway]
