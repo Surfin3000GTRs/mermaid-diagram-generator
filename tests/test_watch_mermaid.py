@@ -112,13 +112,15 @@ class WatchTests(unittest.TestCase):
              patch.object(watch.subprocess, "run", side_effect=watch.subprocess.CalledProcessError(1, "gh")):
             with self.assertRaises(watch.subprocess.CalledProcessError):
                 watch.run()
-        issue["assignees"] = [{"login": "copilot-swe-agent[bot]"}]
-        with patch.object(watch, "latest_release", return_value=("12.3.0", "https://example.test")), \
-             patch.object(watch, "catalog_difference", return_value=(["new"], [])), \
-             patch.object(watch, "find_issue", return_value=issue), \
-             patch.object(watch.subprocess, "run") as assign:
-            watch.run()
-            assign.assert_not_called()
+        for login in ("Copilot", "copilot-swe-agent[bot]"):
+            issue["assignees"] = [{"login": "owner"}, {"login": login}]
+            with self.subTest(login=login), \
+                 patch.object(watch, "latest_release", return_value=("12.3.0", "https://example.test")), \
+                 patch.object(watch, "catalog_difference", return_value=(["new"], [])), \
+                 patch.object(watch, "find_issue", return_value=issue), \
+                 patch.object(watch.subprocess, "run") as assign:
+                watch.run()
+                assign.assert_not_called()
 
 
 if __name__ == "__main__":

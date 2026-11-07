@@ -16,6 +16,7 @@ CATALOG = ROOT / "skills" / "mermaid-diagram-generator" / "references" / "diagra
 VERSION_FILE = ROOT / ".github" / "mermaid-version.txt"
 GITHUB_API = "https://api.github.com"
 UPSTREAM = "mermaid-js/mermaid"
+COPILOT_LOGINS = {"copilot", "copilot-swe-agent", "copilot-swe-agent[bot]"}
 SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 
 
@@ -158,8 +159,8 @@ def run():
     if issue["state"] != "open":
         print("Closed issue is not recreated; reopen it or manually start a review if needed.")
         return
-    if any(assignee["login"] in ("copilot-swe-agent[bot]", "copilot-swe-agent")
-           for assignee in issue.get("assignees", [])):
+    # The REST API reports the Copilot coding agent as the bot "Copilot".
+    if any(assignee["login"].lower() in COPILOT_LOGINS for assignee in issue.get("assignees", [])):
         print("Copilot is already assigned.")
         return
     assignment_token = os.environ.get("COPILOT_ASSIGN_TOKEN")
