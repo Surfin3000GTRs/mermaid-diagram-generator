@@ -20,6 +20,7 @@ VS Code の Copilot 向けカスタムスキル。要件・ドキュメント・
 skills/
   mermaid-diagram-generator/
     SKILL.md                        スキル本体(ワークフロー、互換性ガイド、例、チェックリスト)
+    SKILL.ja.md                     スキル本体の日本語版
     references/
       diagram-families.md           図ファミリの選択ガイド(対応バージョン付き)
       flowchart-shapes.md           フローチャートシェイプのカタログ(対応バージョン付き)
@@ -56,12 +57,6 @@ Copy-Item -Recurse mermaid-diagram-generator\skills\mermaid-diagram-generator "$
 - 「この処理の流れを Mermaid のフローチャートにして」
 - 「この Mermaid 図がレンダリングエラーになるので直して」
 - 「このシーケンス図の内容を説明して」
-
-## メンテナンス方針
-
-- `SKILL.md` および `references/` の内容は英語で統一
-- Mermaid の新しい図ファミリが追加されたら [diagram-families.md](./skills/mermaid-diagram-generator/references/diagram-families.md)、新しいシェイプが追加されたら [flowchart-shapes.md](./skills/mermaid-diagram-generator/references/flowchart-shapes.md) を更新
-- バージョン依存の構文を扱う際は、公式ドキュメントで対応バージョンを確認してから記載
 
 ## ライセンス
 

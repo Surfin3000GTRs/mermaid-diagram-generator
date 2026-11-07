@@ -4,7 +4,7 @@ Shape tokens and classic delimiter notation for Mermaid flowcharts. For choosing
 
 ## Flowchart shape catalog
 
-The generic node form `ID@{ shape: TOKEN, label: "Text" }` is available in Mermaid 11.3.0+. The [Mermaid 11.3.0 flowchart shape table](https://github.com/mermaid-js/mermaid/blob/mermaid%4011.3.0/packages/mermaid/src/docs/syntax/flowchart.md#complete-list-of-new-shapes) confirms the version for all tokens below except `datastore`, `folder`, `bucket`, `console`, `browser`, and `person`. Check those six tokens in the target renderer; their minimum version is not established here. The shape name alone does not guarantee that the renderer supports it.
+The generic node form `ID@{ shape: TOKEN, label: "Text" }` is available in Mermaid 11.3.0+. The [Mermaid 11.3.0 flowchart shape table](https://github.com/mermaid-js/mermaid/blob/mermaid%4011.3.0/packages/mermaid/src/docs/syntax/flowchart.md#complete-list-of-new-shapes) confirms the version for all tokens below except `datastore`, `folder`, `bucket`, `console`, `browser`, and `person`. These six tokens are verified in the official shape registry for [11.15.0](https://github.com/mermaid-js/mermaid/blob/mermaid%4011.15.0/packages/mermaid/src/rendering-util/rendering-elements/shapes.ts) and [11.17.0](https://github.com/mermaid-js/mermaid/blob/mermaid%4011.17.0/packages/mermaid/src/rendering-util/rendering-elements/shapes.ts), respectively; the listed versions are confirmed supported versions, not necessarily their first releases. The shape name alone does not guarantee that the host renderer supports it.
 
 | Meaning | Shape token | Typical use | Min version / Status |
 | --- | --- | --- | --- |
@@ -13,12 +13,12 @@ The generic node form `ID@{ shape: TOKEN, label: "Text" }` is available in Merma
 | Terminal point | `stadium` | A start/end or terminal point | v11.3.0+ |
 | Subprocess | `fr-rect` | A subprocess or separately defined activity | v11.3.0+ |
 | Database | `cyl` | A database | v11.3.0+ |
-| Data store | `datastore` | A data-flow store | Check target renderer |
-| Folder | `folder` | A directory or folder | Check target renderer |
-| Bucket | `bucket` | Object or cloud storage bucket | Check target renderer |
-| Console | `console` | A command-line or terminal window | Check target renderer |
-| Browser | `browser` | A browser or web client | Check target renderer |
-| Person | `person` | A human actor | Check target renderer |
+| Data store | `datastore` | A data-flow store | Confirmed in v11.15.0 |
+| Folder | `folder` | A directory or folder | Confirmed in v11.17.0 |
+| Bucket | `bucket` | Object or cloud storage bucket | Confirmed in v11.17.0 |
+| Console | `console` | A command-line or terminal window | Confirmed in v11.17.0 |
+| Browser | `browser` | A browser or web client | Confirmed in v11.17.0 |
+| Person | `person` | A human actor | Confirmed in v11.17.0 |
 | Start | `circle` | A starting point | v11.3.0+ |
 | Bang | `bang` | An emphasized or bang-shaped element | v11.3.0+ |
 | Cloud | `cloud` | A cloud or cloud service | v11.3.0+ |
@@ -72,7 +72,9 @@ flowchart LR
     USER --> API --> DB
 ```
 
-Use only shapes that add information. For older renderers, prefer broadly supported delimiter syntax for common nodes, such as `A[Process]`, `B{Decision}`, `C[(Database)]`, and `D([Start/end])`. The generic shape syntax requires Mermaid 11.3.0+; for tokens marked "Check target renderer", confirm support separately before using them.
+Use only shapes that add information. For older renderers, prefer broadly supported delimiter syntax for common nodes, such as `A[Process]`, `B{Decision}`, `C[(Database)]`, and `D([Start/end])`. Confirm each token's support in the target renderer.
+
+Mermaid 12.3.0 added internal BPMN shape renderers and open-arrow and hollow-circle edge markers, but they are not documented as flowchart syntax in the [12.3.0 flowchart documentation](https://github.com/mermaid-js/mermaid/blob/mermaid%4012.3.0/packages/mermaid/src/docs/syntax/flowchart.md). Do not assume those internal names or markers work in flowcharts. See the [versioned changelog](https://github.com/mermaid-js/mermaid/blob/mermaid%4012.3.0/packages/mermaid/CHANGELOG.md) for the upstream changes.
 
 ### Classic flowchart notation
 

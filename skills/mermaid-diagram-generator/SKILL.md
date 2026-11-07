@@ -19,6 +19,7 @@ Turn requirements, code, or existing diagrams into readable Mermaid without inve
 
 - Mermaid versions and host renderers differ (for example, GitHub, VS Code extensions, and Mermaid Live). Check official documentation and target support before selecting beta diagrams or version-sensitive syntax.
 - New flowchart `@{ shape: ..., label: ... }` declarations require Mermaid 11.3.0+. Individual shape tokens may need a newer renderer; favor legacy delimiters for common shapes when the version is unknown. Use [the shape catalog](./references/flowchart-shapes.md) to check individual token support in the target renderer.
+- Flowchart edge `step` animations and the `flowchart.stepDuration` and `flowchart.stepNumbers` settings require Mermaid 12.3.0+. Do not rely on animation alone to convey sequence; see the [versioned flowchart documentation](https://github.com/mermaid-js/mermaid/blob/mermaid%4012.3.0/packages/mermaid/src/docs/syntax/flowchart.md#step-by-step-flow-animation-v1230).
 - For flowcharts, use stable ASCII IDs and concise display labels. Spaces alone do **not** require quotes. Use `A["..."]` when a label contains syntax-sensitive punctuation, a reserved word such as `end`, or characters that conflict with Mermaid syntax. Use `<br/>` only when needed for readability.
 - Where supported by the selected diagram family, supply a meaningful `accTitle` and `accDescr`. Also explain the diagram's essential meaning in surrounding prose, use descriptive relationship/branch labels, and do not rely on color alone to convey meaning.
 
